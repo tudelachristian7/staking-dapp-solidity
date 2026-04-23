@@ -7,7 +7,6 @@ import "../src/StakingToken.sol";
 import "../lib/openzeppelin-contracts/contracts/token/ERC20/IERC20.sol";
 
 contract StakingTokenTest is Test {
-
     StakingToken stakingToken;
     string name_ = "Staking Token";
     string symbol_ = "STK";
@@ -22,12 +21,12 @@ contract StakingTokenTest is Test {
         uint256 amount_ = 1 ether;
 
         //Token balance previous
-       uint256 balanceBefore_ = IERC20(address(stakingToken)).balanceOf(randomUser);
+        uint256 balanceBefore_ = IERC20(address(stakingToken)).balanceOf(randomUser);
 
         stakingToken.mint(amount_);
 
         //Token balance after
-        uint256 balanceAfter_ =IERC20(address(stakingToken)).balanceOf(randomUser);
+        uint256 balanceAfter_ = IERC20(address(stakingToken)).balanceOf(randomUser);
 
         assert(balanceAfter_ - balanceBefore_ == amount_);
 
