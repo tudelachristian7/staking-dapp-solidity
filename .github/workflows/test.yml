@@ -16,14 +16,20 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
+
     steps:
-      - uses: actions/checkout@v5
+      - name: Checkout
+        uses: actions/checkout@v5
         with:
           persist-credentials: false
-          submodules: recursive
 
       - name: Install Foundry
         uses: foundry-rs/foundry-toolchain@v1
+
+      - name: Install dependencies
+        run: |
+          forge install foundry-rs/forge-std
+          forge install OpenZeppelin/openzeppelin-contracts
 
       - name: Show Forge version
         run: forge --version
